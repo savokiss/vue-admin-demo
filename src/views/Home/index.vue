@@ -2,10 +2,17 @@
   <div class="home">
     <div class="container">
       <div class="sidebar">
-
+        <ul>
+          <li>
+            <router-link to="/">home</router-link>
+          </li>
+          <li>
+            <router-link to="/about">about</router-link>
+          </li>
+        </ul>
       </div>
       <div class="main">
-
+        <router-view></router-view>
       </div>
     </div>
   </div>
