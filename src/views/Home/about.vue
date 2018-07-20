@@ -3,7 +3,7 @@
     <section class="todoapp">
       <header class="header">
         <h1>{{title}}</h1>
-        <input class="new-todo" placeholder="What needs to be done" v-model="newTodo" @keyup.enter="addTodo">
+        <input class="new-todo" placeholder="What needs to be done" v-model.trim="newTodo" @keyup.enter="addTodo">
       </header>
       <section class="section">
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isall">
@@ -32,7 +32,7 @@
             <a href="#/completed">Completed</a>
           </li>
         </ul>
-        <button class="clear-completed">Clear completed</button>
+        <button class="clear-completed" @click="clear">Clear completed</button>
       </footer>
     </section>
   </div>
@@ -81,6 +81,9 @@ export default {
   },
   methods: {
     addTodo () {
+      if (!this.newTodo) {
+        return
+      }
       this.todos.push({
         content: this.newTodo,
         completed: false 
@@ -89,6 +92,9 @@ export default {
     },
     removeTodo (index) {
       this.todos.splice(index, 1)
+    },
+    clear () {
+      this.todos = filters.active(this.todos)
     }
   }
 }
