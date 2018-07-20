@@ -35,20 +35,43 @@ export default {
     width: 100%;
   }
   .navbar{
-    height: 55px;
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid #cfd8dc
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #fff;
+    height: 40px;
+    padding: 10px 60px;
+    z-index: 100;
+    background: #ccc;
+  }
+  .body-box{
+    position: static;
+    z-index: 1;
+    padding: 0 60px 30px;
+    overflow-x: hidden;
+    border-top:1px solid #ccc;
   }
   .sidebar {
     position: fixed;
-    width: 200px;
-    height: 100%;
-    overflow: scroll;
+    z-index: 10;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    width:100px;
+    overflow-x: hidden;
+    overflow-y: auto;
     border-right:1px solid #ccc;
   }
   .main{
-    margin-left: 200px;
+    position: fixed;
+    z-index: 10;
+    top: 40px;
+    left: 100px;
+    bottom: 0;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right:1px solid #ccc;
   }
 }
 </style>

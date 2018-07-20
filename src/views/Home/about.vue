@@ -7,9 +7,9 @@
       </header>
       <section class="section">
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isall">
-        <label for="toggle-all">Mark all as complete1</label>
+        <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-          <li  :class="{completed:todo.completed}" v-for="(todo,index) in todos">
+          <li v-bind:key="{completed:todo.completed}" v-for="(todo,index) in todos">
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed">
               <label>{{todo.content}}</label>
@@ -47,7 +47,7 @@ var filters = {
       return !todo.completed
     })
   },
-  Completed (todos) {
+  completed (todos) {
     return todos.filter((todo) => {
       return todo.completed
     })
@@ -56,12 +56,9 @@ var filters = {
 export default {
   data () {
     return {
-      title: 'todo',
+      title: 'todos',
       newTodo: '',
-      todos: [{
-        content: 'vue',
-        completed: false  
-      }]
+      todos: []
     }
   },
   computed: {
@@ -73,7 +70,7 @@ export default {
         return this.remain === 0
       },
       set (value) {
-        this.todos.forEach ((todos)=> {
+        this.todos.forEach ((todos) => {
             todos.completed = value
         })
       }
@@ -120,16 +117,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
-  background: #f5f5f5;
-  color: #4d4d4d;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
-}
 :focus {
   outline: 0;
 }
@@ -144,7 +131,7 @@ body {
     &::-webkit-input-placeholder, &::-moz-placeholder, &::input-placeholder {
       font-style: italic;
       font-weight: 300;
-      color: #e6e6e6;
+      color: #fff;
     }
   }
   h1 {
@@ -243,14 +230,12 @@ body {
     .toggle {
       text-align: center;
       width: 40px;
-      /* auto, since non-WebKit browsers doesn't support input styling */
       height: auto;
       position: absolute;
       top: 0;
       bottom: 0;
       margin: auto 0;
       border: none;
-      /* Mobile Safari */
       -webkit-appearance: none;
       appearance: none;
       opacity: 0;
