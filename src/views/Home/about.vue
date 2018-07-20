@@ -9,7 +9,7 @@
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isall">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-          <li v-bind:key="{completed:todo.completed}" v-for="(todo,index) in todos">
+          <li :key="index" v-for="(todo,index) in todos">
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed">
               <label>{{todo.content}}</label>
@@ -70,8 +70,8 @@ export default {
         return this.remain === 0
       },
       set (value) {
-        this.todos.forEach ((todos) => {
-            todos.completed = value
+        this.todos.forEach((todos) => {
+          todos.completed = value
         })
       }
     }
@@ -83,7 +83,7 @@ export default {
       }
       this.todos.push({
         content: this.newTodo,
-        completed: false 
+        completed: false
       })
       this.newTodo = ''
     },
