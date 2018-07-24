@@ -3,13 +3,13 @@
     <section class="todoapp">
       <header class="header">
         <h1>{{title}}</h1>
-        <input class = "new-todo" placeholder = "What needs to be done" v-model.trim = "newTodo" @keyup.enter="addTodo">
+        <input class="new-todo" placeholder="What needs to be done" v-model.trim="newTodo" @keyup.enter="addTodo">
       </header>
       <section class="section">
-        <input id="toggle-all" class="toggle-all" type="checkbox" v-model = "isall">
+        <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isall">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-          <li v-bind:class = "{completed:todo.completed}" v-for = "(todo, index) in todos" :key = "index">
+          <li v-bind:class="{completed:todo.completed}" v-for="(todo, index) in filteredList(filterType)" :key="index">
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed">
               <label>{{todo.content}}</label>
@@ -20,16 +20,17 @@
         </ul>
       </section>
       <footer class="footer" v-show="todos.length">
-        <span class="todo-count"><strong>{{remain}}</strong> item left</span>
+        <span class="todo-count">
+          <strong>{{remain}}</strong> item left</span>
         <ul class="filters">
           <li>
-            <a class="selected" href="#/">All</a>
+            <a :class="{ selected: filterType === 'all'}" @click="onFilterAll">All</a>
           </li>
           <li>
-            <a href="#/active">Active</a>
+            <a :class="{ selected: filterType === 'active'}" @click="onFilterActive">Active</a>
           </li>
           <li>
-            <a href="#/completed">Completed</a>
+            <a :class="{ selected: filterType === 'completed'}" @click="onFilterCompleted">Completed</a>
           </li>
         </ul>
         <button class="clear-completed" @click="clear">Clear completed</button>
@@ -58,7 +59,8 @@ export default {
     return {
       title: 'todos',
       newTodo: '',
-      todos: []
+      todos: [],
+      filterType: 'all'
     }
   },
   computed: {
@@ -92,18 +94,31 @@ export default {
     },
     clear () {
       this.todos = filters.active(this.todos)
+    },
+    // 过滤后的数据
+    filteredList (type = 'all') {
+      return filters[type](this.todos)
+    },
+    onFilterAll () {
+      this.filterType = 'all'
+    },
+    onFilterActive () {
+      this.filterType = 'active'
+    },
+    onFilterCompleted () {
+      this.filterType = 'completed'
     }
   }
 }
 </script>
 <style lang="scss">
-  .about{
-    width:800px;
-    margin:0 auto;
-    padding-top:120px;
-    padding-bottom:100px;
-  }
-  button {
+.about {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -128,7 +143,9 @@ export default {
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   input {
-    &::-webkit-input-placeholder, &::-moz-placeholder, &::input-placeholder {
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &::input-placeholder {
       font-style: italic;
       font-weight: 300;
       color: #fff;
@@ -147,7 +164,8 @@ export default {
     text-rendering: optimizeLegibility;
   }
 }
-.new-todo, .edit {
+.new-todo,
+.edit {
   position: relative;
   margin: 0;
   width: 100%;
@@ -303,7 +321,9 @@ export default {
     left: 0;
     height: 50px;
     overflow: hidden;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+      0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+      0 17px 2px -6px rgba(0, 0, 0, 0.2);
   }
 }
 .todo-count {
@@ -338,7 +358,8 @@ export default {
     }
   }
 }
-.clear-completed, html .clear-completed:active {
+.clear-completed,
+html .clear-completed:active {
   float: right;
   position: relative;
   line-height: 20px;
