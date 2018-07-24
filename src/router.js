@@ -12,7 +12,7 @@ export default new Router({
       path: '/',
       component: HomeWrapper,
       children: [
-        { name: 'home', path: '', component: Home },
+        { name: 'home', path: 'home', component: Home },
         { name: 'about', path: 'about', component: About }
       ]
     }
