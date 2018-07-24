@@ -3,13 +3,13 @@
     <section class="todoapp">
       <header class="header">
         <h1>{{title}}</h1>
-        <input class="new-todo" placeholder="What needs to be done" v-model.trim="newTodo" @keyup.enter="addTodo">
+        <input class = "new-todo" placeholder = "What needs to be done" v-model.trim = "newTodo" @keyup.enter="addTodo">
       </header>
       <section class="section">
-        <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isall">
+        <input id="toggle-all" class="toggle-all" type="checkbox" v-model = "isall">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-          <li v-bind:key="{completed:todo.completed}" v-for="(todo,index) in todos">
+          <li v-bind:class = "{completed:todo.completed}" v-for = "(todo, index) in todos" :key = "index">
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed">
               <label>{{todo.content}}</label>
@@ -70,8 +70,8 @@ export default {
         return this.remain === 0
       },
       set (value) {
-        this.todos.forEach ((todos) => {
-            todos.completed = value
+        this.todos.forEach((todos) => {
+          todos.completed = value
         })
       }
     }
@@ -83,7 +83,7 @@ export default {
       }
       this.todos.push({
         content: this.newTodo,
-        completed: false 
+        completed: false
       })
       this.newTodo = ''
     },
@@ -100,7 +100,8 @@ export default {
   .about{
     width:800px;
     margin:0 auto;
-    padding-top:200px;
+    padding-top:120px;
+    padding-bottom:100px;
   }
   button {
   margin: 0;
@@ -113,7 +114,6 @@ export default {
   font-weight: inherit;
   color: inherit;
   -webkit-appearance: none;
-  appearance: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -237,7 +237,6 @@ export default {
       margin: auto 0;
       border: none;
       -webkit-appearance: none;
-      appearance: none;
       opacity: 0;
       + label {
         background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
