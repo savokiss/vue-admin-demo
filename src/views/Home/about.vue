@@ -24,13 +24,13 @@
           <strong>{{remain}}</strong> item left</span>
         <ul class="filters">
           <li>
-            <a :class="{ selected: filterType === 'all'}" @click="onFilterAll">All</a>
+            <a :class="{ selected: filterType === 'all'}" @click="onFilter('all')">All</a>
           </li>
           <li>
-            <a :class="{ selected: filterType === 'active'}" @click="onFilterActive">Active</a>
+            <a :class="{ selected: filterType === 'active'}" @click="onFilter('active')">Active</a>
           </li>
           <li>
-            <a :class="{ selected: filterType === 'completed'}" @click="onFilterCompleted">Completed</a>
+            <a :class="{ selected: filterType === 'completed'}" @click="onFilter('completed')">Completed</a>
           </li>
         </ul>
         <button class="clear-completed" @click="clear">Clear completed</button>
@@ -99,14 +99,8 @@ export default {
     filteredList (type = 'all') {
       return filters[type](this.todos)
     },
-    onFilterAll () {
-      this.filterType = 'all'
-    },
-    onFilterActive () {
-      this.filterType = 'active'
-    },
-    onFilterCompleted () {
-      this.filterType = 'completed'
+    onFilter (filterType) {
+      this.filterType = filterType
     }
   }
 }
