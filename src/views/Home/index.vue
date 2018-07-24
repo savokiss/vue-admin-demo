@@ -94,7 +94,7 @@ export default {
     overflow-x: hidden;
     overflow-y: auto;
     background: #fff;
-   
+
   }
   .main{
     width:100%;
