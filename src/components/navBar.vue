@@ -20,7 +20,6 @@ export default {
 </script>
 <style scoped lang="scss">
   .nav{
-    margin-top:20px;
     font-size: 20px;
     ul{
       width: 1170px;
@@ -31,11 +30,12 @@ export default {
       -webkit-box-pack: center;
       justify-content: center;
       border-top: 1px solid #eee;
+      background: #fff;
       li{
         float: left;
         margin:0 20px;
         a{
-          color:#666;
+          color: #666;
           padding:16px;
           display: inline-block;
           &:hover {
