@@ -1,10 +1,10 @@
 <template>
   <div class="nav">
     <el-menu :default-active="activeIndex"
+              router = "true"
               class="el-menu-demo content"
               mode="horizontal"
               @select="handleSelect"
-              background-color="#fff"
               text-color="#333"
               active-text-color="#000">
       <el-submenu index="2">
@@ -19,12 +19,8 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="1">
-        <router-link to = "/about" >消息处理中心</router-link>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <router-link to = "/home" >消息</router-link>
-      </el-menu-item>
+      <el-menu-item index="about">消息处理中心</el-menu-item>
+      <el-menu-item index="home">消息</el-menu-item>
       <el-menu-item index="4"><a href="#" target="_blank">订单管理</a></el-menu-item>
     </el-menu>
   </div>
