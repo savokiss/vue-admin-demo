@@ -30,7 +30,7 @@ function getItem (n) {
     res.push({
       width: 100 + ~~(Math.random() * 100),
       height: 100 + ~~(Math.random() * 50),
-      title: 'test',
+      title: i,
       style: {
         backgroundColor: getRandomColor()
       }
@@ -63,7 +63,9 @@ export default {
     right: 5px;
     bottom: 5px;
     font-size: 1.2em;
-    color: rgb(0, 158, 107);
+  }
+  .vue-waterfall-slot{
+    padding: 10px;
   }
 }
 </style>

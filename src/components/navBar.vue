@@ -1,10 +1,32 @@
 <template>
   <div class="nav">
-    <ul>
-      <li v-for = "(nav, index) in navs" :key = "index">
-        <router-link :to = "'/'+nav">{{nav}}</router-link>
-      </li>
-    </ul>
+    <el-menu :default-active="activeIndex"
+              class="el-menu-demo content"
+              mode="horizontal"
+              @select="handleSelect"
+              background-color="#fff"
+              text-color="#333"
+              active-text-color="#000">
+      <el-submenu index="2">
+        <template slot="title">我的工作台</template>
+        <el-menu-item index="2-1">选项1</el-menu-item>
+        <el-menu-item index="2-2">选项2</el-menu-item>
+        <el-menu-item index="2-3">选项3</el-menu-item>
+        <el-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="2-4-1">选项1</el-menu-item>
+          <el-menu-item index="2-4-2">选项2</el-menu-item>
+          <el-menu-item index="2-4-3">选项3</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="1">
+        <router-link to = "/about" >消息处理中心</router-link>
+      </el-menu-item>
+      <el-menu-item index="3">
+        <router-link to = "/home" >消息</router-link>
+      </el-menu-item>
+      <el-menu-item index="4"><a href="#" target="_blank">订单管理</a></el-menu-item>
+    </el-menu>
   </div>
 </template>
 
@@ -13,7 +35,12 @@ export default {
   name: 'navBar',
   data () {
     return {
-      navs: ['about', 'home']
+      activeIndex: '1'
+    }
+  },
+  methods: {
+    handleSelect (key, keyPath) {
+      console.log(key, keyPath)
     }
   }
 }
@@ -21,7 +48,7 @@ export default {
 <style scoped lang="scss">
   .nav{
     font-size: 20px;
-    ul{
+    .content{
       width: 1170px;
       height: 60px;
       padding-left: 15px;
@@ -30,20 +57,8 @@ export default {
       -webkit-box-pack: center;
       justify-content: center;
       border-top: 1px solid #eee;
+      border-bottom: none;
       background: #fff;
-      li{
-        float: left;
-        margin:0 20px;
-        a{
-          color: #666;
-          padding:16px;
-          display: inline-block;
-          &:hover {
-            color:#000;
-            border-bottom: 1px solid #ddd;
-          }
-        }
-      }
     }
   }
 </style>
