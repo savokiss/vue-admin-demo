@@ -129,30 +129,20 @@ export default {
   data () {
     return {
       tabPosition: 'left',
-      tasks: [],
+      tasks: [{
+        id: '001',
+        order: '1',
+        name: '熟悉项目',
+        head: '王小虎',
+        plan: '20',
+        start: '2016-05-04',
+        end: '2016-05-04',
+        tag: '正常',
+        describe: '1'
+      }],
       dialogTableVisible: false,
       dialogFormVisible: false,
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
       formLabelWidth: '120px',
-      ruleForm: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
       rules: {
         name: [
           { required: true, message: '请输入任务名称', trigger: 'blur' },
@@ -206,14 +196,21 @@ export default {
           message: '获取数据失败',
           type: ''
         })
+        console.log('失败')
       })
   },
   methods: {
     addTask () {
-      console.log(this.name)
       this.tasks.push({
-        name: this.name,
-        end: this.end
+        id: '001',
+        order: '2',
+        name: '熟悉项目',
+        head: '王小虎',
+        plan: '20',
+        start: '2016-05-04',
+        end: '2016-05-04',
+        tag: '紧急',
+        describe: '1'
       })
       this.dialogFormVisible = false
     }
