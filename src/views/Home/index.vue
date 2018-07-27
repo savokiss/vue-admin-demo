@@ -48,7 +48,10 @@ export default {
   methods: {
     // 滚动监听  滚动触发的效果写在这里
     handleScroll () {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      var scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
       if (scrollTop >= this.offsetTop) {
         this.isFixed = true
         this.marginTop = document.querySelector('.sidebar').offsetHeight + 'px'
@@ -76,14 +79,14 @@ export default {
   .container {
     width: 100%;
   }
-  .header{
+  .header {
     width: 100%;
     display: flex;
     justify-content: center;
-    img{
-    margin-top: 20px;
-    width: 175px;
-    margin-bottom: 20px;
+    img {
+      margin-top: 20px;
+      width: 175px;
+      margin-bottom: 20px;
     }
   }
   .sidebar {
@@ -91,16 +94,14 @@ export default {
     height: 60px;
     display: flex;
     justify-content: center;
-    overflow-x: hidden;
-    overflow-y: auto;
     background: #fff;
-
   }
-  .main{
-    width:100%;
+  .main {
+    width: 100%;
+    padding: 0 10px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-right:1px solid #ccc;
+    border-right: 1px solid #ccc;
   }
 }
 </style>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HomeWrapper from './views/Home/index.vue'
 import About from './views/Home/about.vue'
 import Home from './views/Home/home.vue'
+import Task from './views/Home/task.vue'
 
 Vue.use(Router)
 
@@ -12,8 +13,9 @@ export default new Router({
       path: '/',
       component: HomeWrapper,
       children: [
-        { name: 'home', path: 'home', component: Home },
-        { name: 'about', path: 'about', component: About }
+        { name: 'home', path: '/', component: Home },
+        { name: 'about', path: 'about', component: About },
+        { name: 'task', path: 'task', component: Task }
       ]
     }
   ]

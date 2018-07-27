@@ -1,15 +1,15 @@
 <template>
   <div class="nav">
     <el-menu :default-active="activeIndex"
-              router = "true"
+              router
               class="el-menu-demo content"
               mode="horizontal"
               @select="handleSelect"
               text-color="#333"
               active-text-color="#000">
-      <el-submenu index="2">
+      <el-submenu index="">
         <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
+        <el-menu-item index="/task">任务</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
         <el-menu-item index="2-3">选项3</el-menu-item>
         <el-submenu index="2-4">
@@ -20,7 +20,7 @@
         </el-submenu>
       </el-submenu>
       <el-menu-item index="about">消息处理中心</el-menu-item>
-      <el-menu-item index="home">消息</el-menu-item>
+      <el-menu-item index="/">消息</el-menu-item>
       <el-menu-item index="4"><a href="#" target="_blank">订单管理</a></el-menu-item>
     </el-menu>
   </div>
@@ -46,7 +46,6 @@ export default {
     font-size: 20px;
     .content{
       width: 1170px;
-      height: 60px;
       padding-left: 15px;
       padding-right: 15px;
       display: flex;
