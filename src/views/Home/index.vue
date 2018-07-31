@@ -1,25 +1,65 @@
 <template>
-  <div class="index">
-    <div class="container">
-      <header class="header">
-        <div>
-          <img src="http://qty83k.creatby.com/materials/origin/b83026d03c9761d8fd6cab59d39be219_origin.png" alt="">
-          <div>
-            <h4></h4>
-          </div>
-          <div>
-            <p></p>
-          </div>
-        </div>
-      </header>
-      <div class="sidebar" :class="{ fixedBar: isFixed }">
-            <navBar></navBar>
-      </div>
-      <div class="main" :style="{ marginTop: marginTop }">
-        <router-view></router-view>
-      </div>
+  <div class="demo-wrapper">
+  <div class="login-screen">
+    <p>1</p>
+    <div class="myform">
+      <input type="text" placeholder="Password" />
+      <button data-icon="&#xe00c;" id="unlock-button"></button>
     </div>
   </div>
+  <div class="page todos">
+    <h2 class="page-title">2</h2>
+    <ul contenteditable>
+      <li>Finish my 3D demo<span class="delete-button">x</span></li>
+      <li>Design my blog<span class="delete-button">x</span></li>
+      <li>Buy groceries<span class="delete-button">x</span></li>
+      <li>Finish my todo app<span class="delete-button">x</span></li>
+      <li>Organize my bookmarks<span class="delete-button">x</span></li>
+    </ul>
+    <div class="close-button">x</div>
+  </div>
+
+  <div class="page random-page">
+    <h2 class="page-title">Some Awesome App!</h2>
+    <div class="close-button">x</div>
+  </div>
+
+  <div class="dashboard clearfix">
+      <div class="col1 clearfix">
+        <div class="big todos-thumb" data-page="todos">
+          <p>My Todos
+            <span class="todos-thumb-span">You have 5 more tasks to do!</span>
+          </p>
+        </div>
+        <div class="small lock-thumb">
+          <span class="icon-font  center" aria-hidden="true" data-icon="&#xe00d;"></span>
+        </div>
+        <div class="small last cpanel-thumb" data-page="random-page">
+          <span class="icon-font" aria-hidden="true" data-icon="&#xe016;"></span>
+        </div>
+        <div class="big notes-thumb" data-page="random-page">
+          <span class="icon-font" aria-hidden="true" data-icon="&#xe000;"></span>
+          <p> Notes</p>
+        </div>
+        <div class="big calculator-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe017;"></span><p>Calculator</p></div>
+      </div>
+      <div class="col2 clearfix">
+        <div class="big organizer-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe015;"></span><p>Contacts</p></div>
+        <div class="big news-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00f;"></span><p>News</p></div>
+        <div class="small calendar-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00a;"></span></div>
+        <div class="small last paint-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe014;"></span></div>
+        <div class="big weather-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe012;"></span><p> Weather</p></div>
+      </div>
+      <div class="col3 clearfix">
+        <div class="big photos-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe001;"></span><p> Photos</p></div>
+        <div class="small alarm-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe009;"></span></div>
+        <div class="small last favorites-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe018;"></span></div>
+        <div class="big games-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe002;"></span><p>Games</p></div>
+        <div class="small git-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe010;"></span></div>
+        <div class="small last code-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe011;"></span></div>
+      </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -28,25 +68,14 @@ export default {
   name: 'index',
   data () {
     return {
-      isFixed: false, // navbar浮动
-      offsetTop: 0, // 触发navbar浮动的阈值
-      marginTop: 0
+
     }
   },
   components: {
-    navBar: navBar
   },
   mounted () {
-    // 设置初始的 padding-bottom 值为 footer 的高度 +20 防止数据列表拉到最下面被footer挡住 +多少自定
-    // this.paddingBottom = document.querySelector('.footer').offsetHeight + 20 + 'px'
-    // 设置bar浮动阈值为 .sidebar 至页面顶部的距离
-    this.offsetTop = document.querySelector('.sidebar').offsetTop
-    // 开启滚动监听
-    console.dir(document.querySelector('.sidebar'))
-    window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
-    // 滚动监听  滚动触发的效果写在这里
     handleScroll () {
       var scrollTop =
         window.pageYOffset ||
@@ -68,40 +97,4 @@ export default {
 </script>
 
 <style lang="scss">
-.fixedBar {
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-.index {
-  .container {
-    width: 100%;
-  }
-  .header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    img {
-      margin-top: 20px;
-      width: 175px;
-      margin-bottom: 20px;
-    }
-  }
-  .sidebar {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    background: #fff;
-  }
-  .main {
-    width: 100%;
-    padding: 0 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-right: 1px solid #ccc;
-  }
-}
 </style>
