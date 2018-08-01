@@ -102,10 +102,9 @@
      <el-table-column
         prop="describe"
         label="描述"
-        width="300">
+        width="120">
     </el-table-column>
     <el-table-column
-      fixed="right"
       label="操作"
       width="140">
       <template slot-scope="scope">
@@ -185,20 +184,18 @@ export default {
     }
   },
   created () {
-    axios
-      .get('http://localhost:3000/answer')
-      .then(response => {
-        console.log(response.data)
-        this.tasks = response.data
-      })
-      .catch(error => {
-        this.$notify({
-          title: '失败',
-          message: '获取数据失败',
-          type: ''
-        })
-        console.log('失败')
-      })
+    axios.get('http://localhost:3000/answer').then(response => {
+      console.log(response.data)
+      this.tasks = response.data
+    })
+    // .catch(error => {
+    //  this.$notify({
+    //    title: '失败',
+    //    message: '获取数据失败',
+    //    type: ''
+    //  })
+    //  console.log('失败')
+    // })
   },
   methods: {
     addTask () {

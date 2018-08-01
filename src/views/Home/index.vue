@@ -97,7 +97,7 @@ export default {
   transition: all .28s ease-out;
 }
 .index-right-center {
-  height:690px;
+  height:640px;
   overflow-y: scroll;
 }
 </style>

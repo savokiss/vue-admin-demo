@@ -1,4 +1,5 @@
 <template>
+<div class="login-box">
     <div class='login'>
         <div class='login_title'>
         <span>管理员登录</span>
@@ -41,18 +42,16 @@
             <p>欢迎登陆后台管理系统</p>
         </div>
     </div>
+    </div>
 </template>
 <script>
-
 export default {
   name: 'login',
   data () {
-    return {
-    }
+    return {}
   },
   components: {},
-  mounted () {
-  },
+  mounted () {},
   methods: {
     handleLogin () {
       this.$message({
@@ -65,17 +64,18 @@ export default {
 }
 </script>
 <style lang="scss">
-.login{ padding: 0;
-    margin: 0;
-    height: 100%;
-    font-size: 16px;
-    background-repeat: no-repeat;
-    background-position: left top;
-    // background-color: #242645;
-    color: #fff;
-    font-family: 'Source Sans Pro';
-    background-size: 100%;
-    background-image: url(/images/Starry.jpg);
-
+.login-box {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  // background-color: #242645;
+  color: #fff;
+  font-family: "Source Sans Pro";
+  background-size: 100%;
+  background-image: url(/images/Starry.jpg);
 }
 </style>
