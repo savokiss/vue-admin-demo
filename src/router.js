@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomeWrapper from './views/Home/index.vue'
+import Login from './views/Logins/login.vue'
+import Index from './views/Home/index.vue'
 import About from './views/Home/about.vue'
 import Home from './views/Home/home.vue'
 import Task from './views/Home/task.vue'
@@ -11,11 +12,15 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: HomeWrapper,
+      component: Login
+    },
+    {
+      path: '/index',
+      component: Index,
       children: [
-        { name: 'home', path: '/', component: Home },
-        { name: 'about', path: 'about', component: About },
-        { name: 'task', path: 'task', component: Task }
+        { name: 'home', path: '/home', component: Home },
+        { name: 'about', path: '/about', component: About },
+        { name: 'task', path: '/', component: Task }
       ]
     }
   ]

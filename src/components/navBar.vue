@@ -1,28 +1,38 @@
 <template>
-  <div class="nav">
-    <el-menu :default-active="activeIndex"
-              router
-              class="el-menu-demo content"
-              mode="horizontal"
-              @select="handleSelect"
-              text-color="#333"
-              active-text-color="#000">
-      <el-submenu index="">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="/task">任务</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="about">消息处理中心</el-menu-item>
-      <el-menu-item index="/">消息</el-menu-item>
-      <el-menu-item index="4"><a href="#" target="_blank">订单管理</a></el-menu-item>
-    </el-menu>
+  <div class="dashboard clearfix">
+      <div class="col1 clearfix">
+        <div class="big todos-thumb" data-page="todos">
+          <p>1
+            <span class="todos-thumb-span">11</span>
+          </p>
+        </div>
+        <div class="small lock-thumb">
+          <span class="icon-font  center" aria-hidden="true" data-icon="">2</span>
+        </div>
+        <div class="small last cpanel-thumb" data-page="random-page">
+          <span class="icon-font" aria-hidden="true" data-icon="">3</span>
+        </div>
+        <div class="big notes-thumb" data-page="random-page">
+          <span class="icon-font" aria-hidden="true" data-icon="">4</span>
+          <p> 41</p>
+        </div>
+        <div class="big calculator-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p>5</p></div>
+      </div>
+      <div class="col2 clearfix">
+        <div class="big organizer-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p>6</p></div>
+        <div class="big news-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p>7</p></div>
+        <div class="small calendar-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span>8</div>
+        <div class="small last paint-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span>9</div>
+        <div class="big weather-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p> 0</p></div>
+      </div>
+      <div class="col3 clearfix">
+        <div class="big photos-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p> 10</p></div>
+        <div class="small alarm-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="">12</span></div>
+        <div class="small last favorites-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="">13</span></div>
+        <div class="big games-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon=""></span><p>14</p></div>
+        <div class="small git-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="">15</span></div>
+        <div class="small last code-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="">16</span></div>
+      </div>
   </div>
 </template>
 
@@ -31,7 +41,7 @@ export default {
   name: 'navBar',
   data () {
     return {
-      activeIndex: '1'
+      show2: true
     }
   },
   methods: {
@@ -42,18 +52,4 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-  .nav{
-    font-size: 20px;
-    .content{
-      width: 1170px;
-      padding-left: 15px;
-      padding-right: 15px;
-      display: flex;
-      -webkit-box-pack: center;
-      justify-content: center;
-      border-top: 1px solid #eee;
-      border-bottom: none;
-      background: #fff;
-    }
-  }
 </style>

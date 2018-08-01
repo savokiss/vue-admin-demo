@@ -56,7 +56,6 @@
         <el-table
             :data = "tasks"
             style = "width: 100%"
-            max-height = "700"
             size = "medium">
         <el-table-column
         prop="order"
@@ -128,18 +127,20 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      tabPosition: 'left',
-      tasks: [{
-        id: '001',
-        order: '1',
-        name: '熟悉项目',
-        head: '王小虎',
-        plan: '20',
-        start: '2016-05-04',
-        end: '2016-05-04',
-        tag: '正常',
-        describe: '1'
-      }],
+      tabPosition: 'top',
+      tasks: [
+        {
+          id: '001',
+          order: '1',
+          name: '熟悉项目',
+          head: '王小虎',
+          plan: '20',
+          start: '2016-05-04',
+          end: '2016-05-04',
+          tag: '正常',
+          describe: '1'
+        }
+      ],
       dialogTableVisible: false,
       dialogFormVisible: false,
       formLabelWidth: '120px',
@@ -222,5 +223,14 @@ export default {
 .task {
   width: 100%;
   height: 100%;
+}
+// 面包屑导航
+.el-breadcrumb {
+  height: 40px;
+  line-height: 40px;
+}
+// table
+.el-table {
+  padding: 10px;
 }
 </style>

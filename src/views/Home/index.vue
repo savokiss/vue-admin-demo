@@ -1,100 +1,103 @@
 <template>
-  <div class="demo-wrapper">
-  <div class="login-screen">
-    <p>1</p>
-    <div class="myform">
-      <input type="text" placeholder="Password" />
-      <button data-icon="&#xe00c;" id="unlock-button"></button>
-    </div>
-  </div>
-  <div class="page todos">
-    <h2 class="page-title">2</h2>
-    <ul contenteditable>
-      <li>Finish my 3D demo<span class="delete-button">x</span></li>
-      <li>Design my blog<span class="delete-button">x</span></li>
-      <li>Buy groceries<span class="delete-button">x</span></li>
-      <li>Finish my todo app<span class="delete-button">x</span></li>
-      <li>Organize my bookmarks<span class="delete-button">x</span></li>
-    </ul>
-    <div class="close-button">x</div>
-  </div>
-
-  <div class="page random-page">
-    <h2 class="page-title">Some Awesome App!</h2>
-    <div class="close-button">x</div>
-  </div>
-
-  <div class="dashboard clearfix">
-      <div class="col1 clearfix">
-        <div class="big todos-thumb" data-page="todos">
-          <p>My Todos
-            <span class="todos-thumb-span">You have 5 more tasks to do!</span>
-          </p>
-        </div>
-        <div class="small lock-thumb">
-          <span class="icon-font  center" aria-hidden="true" data-icon="&#xe00d;"></span>
-        </div>
-        <div class="small last cpanel-thumb" data-page="random-page">
-          <span class="icon-font" aria-hidden="true" data-icon="&#xe016;"></span>
-        </div>
-        <div class="big notes-thumb" data-page="random-page">
-          <span class="icon-font" aria-hidden="true" data-icon="&#xe000;"></span>
-          <p> Notes</p>
-        </div>
-        <div class="big calculator-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe017;"></span><p>Calculator</p></div>
+  <div class="index-box" style="height:100%">
+      <div class="index-left">
+        <el-menu default-active="1-4-1" class="el-menu-vertical-demo"
+                                  @open="handleOpen"
+                                  @close="handleClose"
+                                  :collapse="isCollapse"
+                                  vue-router>
+        <el-submenu index="1">
+          <template slot="title">
+            <i class="el-icon-location"></i>
+            <span slot="title">导航一</span>
+          </template>
+          <el-menu-item-group>
+            <span slot="title">分组一</span>
+            <el-menu-item index="/">选项1</el-menu-item>
+            <el-menu-item index="1-2">选项2</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="分组2">
+            <el-menu-item index="1-3">选项3</el-menu-item>
+          </el-menu-item-group>
+          <el-submenu index="1-4">
+            <span slot="title">选项4</span>
+            <el-menu-item index="1-4-1">选项1</el-menu-item>
+          </el-submenu>
+        </el-submenu>
+        <el-menu-item index="2">
+          <i class="el-icon-menu"></i>
+          <span slot="title">导航二</span>
+        </el-menu-item>
+        <el-menu-item index="3" disabled>
+          <i class="el-icon-document"></i>
+          <span slot="title">导航三</span>
+        </el-menu-item>
+        <el-menu-item index="4">
+          <i class="el-icon-setting"></i>
+          <span slot="title">导航四</span>
+        </el-menu-item>
+      </el-menu>
       </div>
-      <div class="col2 clearfix">
-        <div class="big organizer-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe015;"></span><p>Contacts</p></div>
-        <div class="big news-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00f;"></span><p>News</p></div>
-        <div class="small calendar-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00a;"></span></div>
-        <div class="small last paint-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe014;"></span></div>
-        <div class="big weather-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe012;"></span><p> Weather</p></div>
-      </div>
-      <div class="col3 clearfix">
-        <div class="big photos-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe001;"></span><p> Photos</p></div>
-        <div class="small alarm-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe009;"></span></div>
-        <div class="small last favorites-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe018;"></span></div>
-        <div class="big games-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe002;"></span><p>Games</p></div>
-        <div class="small git-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe010;"></span></div>
-        <div class="small last code-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe011;"></span></div>
+      <div class="index-right">
+          <div>
+            <el-button type="primary" icon="el-icon-share" :label="true" @click = "isCollapseFun"></el-button>
+             <el-breadcrumb separator="/">
+              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item><a href="/">我的任务</a></el-breadcrumb-item>
+            </el-breadcrumb>
+          </div>
+          <div class="index-right-center">
+            <router-view></router-view>
+          </div>
       </div>
   </div>
-</div>
 </template>
-
 <script>
-import navBar from '@/components/navBar.vue'
 export default {
-  name: 'index',
   data () {
     return {
-
+      isCollapse: false
     }
   },
-  components: {
-  },
-  mounted () {
-  },
+  mounted () {},
   methods: {
-    handleScroll () {
-      var scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop
-      if (scrollTop >= this.offsetTop) {
-        this.isFixed = true
-        this.marginTop = document.querySelector('.sidebar').offsetHeight + 'px'
+    isCollapseFun () {
+      if (this.isCollapse) {
+        this.isCollapse = false
       } else {
-        this.isFixed = false
-        this.marginTop = 0
+        this.isCollapse = true
       }
+    },
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
     }
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll) // 离开页面 关闭监听 不然会报错
   }
 }
 </script>
-
-<style lang="scss">
+<style>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+.el-menu {
+  height: 100%;
+}
+.index-left {
+  float: left;
+  z-index: 1001;
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.28s ease-out;
+}
+.index-right {
+  min-height: 100%;
+  transition: all .28s ease-out;
+}
+.index-right-center {
+  height:690px;
+  overflow-y: scroll;
+}
 </style>
