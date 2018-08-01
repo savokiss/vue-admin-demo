@@ -40,7 +40,8 @@
       </div>
       <div class="index-right">
           <div>
-            <el-button type="primary" icon="el-icon-share" :label="true" @click = "isCollapseFun"></el-button>
+            <el-button type="text" icon="el-icon-menu" :label="true" @click = "isCollapseFun"></el-button>
+            <Tag></Tag>
              <el-breadcrumb separator="/">
               <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
               <el-breadcrumb-item><a href="/">我的任务</a></el-breadcrumb-item>
@@ -53,11 +54,15 @@
   </div>
 </template>
 <script>
+import Tag from '../../components/tag.vue'
 export default {
   data () {
     return {
       isCollapse: false
     }
+  },
+  components: {
+    Tag
   },
   mounted () {},
   methods: {
