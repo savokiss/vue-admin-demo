@@ -185,6 +185,7 @@ export default {
   },
   created () {
     axios.get('http://localhost:3000/answer').then(response => {
+      console.log('task 数据')
       console.log(response.data)
       this.tasks = response.data
     })
@@ -199,7 +200,7 @@ export default {
   },
   methods: {
     addTask () {
-      this.tasks.push({
+      let addTask = {
         id: '001',
         order: '2',
         name: '熟悉项目',
@@ -209,8 +210,10 @@ export default {
         end: '2016-05-04',
         tag: '紧急',
         describe: '1'
-      })
+      }
+      this.tasks.push(addTask)
       this.dialogFormVisible = false
+      console.log('添加的数据--->' + addTask.name)
     }
   }
 }

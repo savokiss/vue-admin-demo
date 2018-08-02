@@ -6,28 +6,28 @@
                                   @close="handleClose"
                                   :collapse="isCollapse"
                                   vue-router>
+        <el-menu-item index="/">
+          <i class="el-icon-menu"></i>
+          <span slot="title">首页</span>
+        </el-menu-item>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span slot="title">导航一</span>
           </template>
           <el-menu-item-group>
-            <span slot="title">分组一</span>
-            <el-menu-item index="/">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
+            <span slot="title">任务</span>
+            <el-menu-item index="/task">选项1</el-menu-item>
+            <el-menu-item index="/">选项2</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group title="分组2">
             <el-menu-item index="1-3">选项3</el-menu-item>
           </el-menu-item-group>
-          <el-submenu index="1-4">
+          <el-submenu index="/task">
             <span slot="title">选项4</span>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
+            <el-menu-item index="/task">选项1</el-menu-item>
           </el-submenu>
         </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
-        </el-menu-item>
         <el-menu-item index="3" disabled>
           <i class="el-icon-document"></i>
           <span slot="title">导航三</span>
@@ -42,12 +42,12 @@
           <div>
             <el-button type="text" icon="el-icon-menu" :label="true" @click = "isCollapseFun"></el-button>
             <Tag></Tag>
-             <el-breadcrumb separator="/">
-              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item><a href="/">我的任务</a></el-breadcrumb-item>
-            </el-breadcrumb>
           </div>
           <div class="index-right-center">
+            <el-breadcrumb separator="/">
+              <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item><a href="/task">我的任务</a></el-breadcrumb-item>
+            </el-breadcrumb>
             <router-view></router-view>
           </div>
       </div>

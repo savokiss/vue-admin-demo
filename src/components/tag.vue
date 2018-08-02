@@ -1,8 +1,16 @@
 <template>
-    <el-tag closable>
-    1
-    </el-tag>
-    <!-- v-for="(tag, index) in tags" :key="tag.name" :type="tag.type" -->
+    <div class="tag-box">
+        <el-tag
+                v-for="tag in tags"
+                :key="tag.name"
+                :type="tag.type"
+                closable
+                disable-transitions
+                size="small"
+                @close="handleClose(tag)">
+            {{tag.name}}
+        </el-tag>
+    </div>
 </template>
 <script>
 export default {
@@ -11,12 +19,25 @@ export default {
     return {
       tags: [
         { name: '标签一', type: '' },
-        { name: '标签二', type: 'success' },
-        { name: '标签三', type: 'info' },
-        { name: '标签四', type: 'warning' },
-        { name: '标签五', type: 'danger' }
+        { name: '标签二', type: '' },
+        { name: '标签三', type: '' },
+        { name: '标签四', type: '' },
+        { name: '标签五', type: '' }
       ]
+    }
+  },
+  methods: {
+    handleClose (tag) {
+      this.tags.splice(this.tags.indexOf(tag), 1)
     }
   }
 }
 </script>
+<style lang="scss" scoped>
+.tag-box{
+    display: inline-block;
+    .el-tag{
+        margin:0 5px;
+    }
+}
+</style>
