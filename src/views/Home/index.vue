@@ -1,12 +1,12 @@
 <template>
   <div class="index-box" style="height:100%">
       <div class="index-left">
-        <el-menu default-active="1-4-1" class="el-menu-vertical-demo"
+        <el-menu :default-active="$route.path" class="el-menu-vertical-demo"
                                   @open="handleOpen"
                                   @close="handleClose"
                                   :collapse="isCollapse"
-                                  vue-router>
-        <el-menu-item index="/">
+                                  router>
+        <el-menu-item index="/index">
           <i class="el-icon-menu"></i>
           <span slot="title">首页</span>
         </el-menu-item>
@@ -17,11 +17,11 @@
           </template>
           <el-menu-item-group>
             <span slot="title">任务</span>
-            <el-menu-item index="/task">选项1</el-menu-item>
-            <el-menu-item index="/">选项2</el-menu-item>
+            <el-menu-item index="/index">任务</el-menu-item>
+            <el-menu-item index="/home">选项2</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
+            <el-menu-item index="/about">选项3</el-menu-item>
           </el-menu-item-group>
           <el-submenu index="/task">
             <span slot="title">选项4</span>

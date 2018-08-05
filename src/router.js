@@ -18,9 +18,9 @@ export default new Router({
       path: '/index',
       component: Index,
       children: [
+        { name: 'task', path: '', component: Task },
         { name: 'home', path: '/home', component: Home },
-        { name: 'about', path: '/about', component: About },
-        { name: 'task', path: '/', component: Task }
+        { name: 'about', path: '/about', component: About }
       ]
     }
   ]
